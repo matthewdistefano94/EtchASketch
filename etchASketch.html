@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="style.css">
 
 
 <div id="container">
@@ -6,6 +7,30 @@
 </div>
 
 <script>
+    const container = document.getElementById("container");
+
+    function makeRows(rows,cols){
+        container.style.setProperty('--grid-rows',rows);
+        container.style.setProperty('--grid-cols',cols);
+        for(var i=0;i<(rows*cols);i++){
+            var cell=document.createElement("div");
+            cell.id=('ce');
+            cell.innerText=i+1;
+            container.appendChild(cell).className="grid-item";
+        }
+    }
+    makeRows(16,16);
+
+
+
+
+    const cells=document.querySelectorAll('div');
+    cells.forEach((ce)=>{
+        ce.addEventListener('click',()=>{
+            document.getElementById('ce').style.backgroundColor ='black';
+            console.log(ce.innerText);
+    });
+    });
 
 </script>
 </html>
