@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="style.css">
 
-
-<div id="container">
-
+<div id="game">
+    <button id="startAgain">Start Again</button>
+    <div id="container">
+    </div>
 </div>
 
 <script>
     const container = document.getElementById("container");
 
-    function makeRows(rows,cols){
-        container.style.setProperty('--grid-rows',rows);
-        container.style.setProperty('--grid-cols',cols);
-        for(var i=0;i<(rows*cols);i++){
-            var cell=document.createElement("div");
-            cell.id=("ce"+(i+1));
-            cell.innerText=i+1;
-            container.appendChild(cell).className="cell";
+    function makeRows(rows, cols) {
+        container.style.setProperty('--grid-rows', rows);
+        container.style.setProperty('--grid-cols', cols);
+        for (var i = 0; i < (rows * cols); i++) {
+            var cell = document.createElement("div");
+            cell.id = ("ce" + (i + 1));
+            cell.innerText = i + 1;
+            container.appendChild(cell).className = "cell";
         }
     }
-    makeRows(16,16);
+    makeRows(16, 16);
+
+    function removeRows() {
+        var div = document.getElementById('container');
+        while (div.firstChild) {
+            div.removeChild(div.firstChild);
+        }
+    }
 
 
-
-
-    const cells=document.querySelectorAll('div.cell');
+    const cells = document.querySelectorAll('div.cell');
     console.log(cells);
-    cells.forEach((ce)=>{
-        ce.addEventListener('click',()=>{
-            document.getElementById(ce.id).style.backgroundColor ='black';
-            console.log(ce.innerText);
-            console.log(ce.id+"this is the id ");
-    });
+    cells.forEach((ce) => {
+        ce.addEventListener('mouseover', () => {
+            document.getElementById(ce.id).style.backgroundColor = 'black';
+            document.getElementById(ce.id).style.borderColor = 'black';
+            /*             console.log(ce.innerText);
+                        console.log(ce.id+"this is the id "); */
+        });
     });
 
 </script>
+
 </html>
