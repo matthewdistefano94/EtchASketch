@@ -8,9 +8,10 @@
 </div>
 
 <script>
-    const container = document.getElementById("container");
+
 
     function makeRows(rows, cols) {
+        const container = document.getElementById("container");
         container.style.setProperty('--grid-rows', rows);
         container.style.setProperty('--grid-cols', cols);
         for (var i = 0; i < (rows * cols); i++) {
@@ -18,28 +19,30 @@
             cell.id = ("ce" + (i + 1));
             cell.innerText = i + 1;
             container.appendChild(cell).className = "cell";
-        }
+        }   
+        cellHover();
     }
-    makeRows(16, 16);
+    makeRows(9, 9);
 
-    function removeRows() {
+    function removeContainer() {
         var div = document.getElementById('container');
         while (div.firstChild) {
             div.removeChild(div.firstChild);
         }
     }
 
+        function cellHover() {
+            const cells = document.querySelectorAll('div.cell');
+            console.log(cells);
+            cells.forEach((ce) => {
+                ce.addEventListener('mouseover', () => {
+                    document.getElementById(ce.id).style.backgroundColor = 'black';
+                    document.getElementById(ce.id).style.borderColor = 'black';
+                });
+            });
+        }
 
-    const cells = document.querySelectorAll('div.cell');
-    console.log(cells);
-    cells.forEach((ce) => {
-        ce.addEventListener('mouseover', () => {
-            document.getElementById(ce.id).style.backgroundColor = 'black';
-            document.getElementById(ce.id).style.borderColor = 'black';
-            /*             console.log(ce.innerText);
-                        console.log(ce.id+"this is the id "); */
-        });
-    });
+
 
 </script>
 
