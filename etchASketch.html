@@ -11,6 +11,7 @@
 
 
     function makeRows(rows, cols) {
+        if(!document.getElementById('ce1')){
         const container = document.getElementById("container");
         container.style.setProperty('--grid-rows', rows);
         container.style.setProperty('--grid-cols', cols);
@@ -19,8 +20,13 @@
             cell.id = ("ce" + (i + 1));
             cell.innerText = i + 1;
             container.appendChild(cell).className = "cell";
-        }   
+        }  
+    }
+    else{
+        console.log('already a board.');
+    }
         cellHover();
+        gameButton();
     }
     makeRows(9, 9);
 
@@ -32,17 +38,100 @@
     }
 
         function cellHover() {
+            var light=100;
             const cells = document.querySelectorAll('div.cell');
-            console.log(cells);
+            /*console.log(cells); */
             cells.forEach((ce) => {
                 ce.addEventListener('mouseover', () => {
-                    document.getElementById(ce.id).style.backgroundColor = 'black';
-                    document.getElementById(ce.id).style.borderColor = 'black';
+                    switch (light) {
+                        case 100:
+                            console.log(light);
+                            light = light - 10;
+                            document.getElementById(ce.id).style.backgroundColor = 'hsl(115,100%,90%)';
+                            document.getElementById(ce.id).style.borderColor = 'hsl(115,100%,90%)';
+                            break;
+                        case 90:
+                            console.log(light);
+                            light = light - 10;
+                            document.getElementById(ce.id).style.backgroundColor = 'hsl(115,100%,80%)';
+                            document.getElementById(ce.id).style.borderColor = 'hsl(115,100%,80%)'; 
+                            break;
+                        case 80:
+                            console.log(light);
+                            light = light - 10;
+                            document.getElementById(ce.id).style.backgroundColor = 'hsl(115,100%,70%)';
+                            document.getElementById(ce.id).style.borderColor = 'hsl(115,100%,70%)';
+                            break;
+                        case 70:
+                            console.log(light);
+                            light = light - 10;
+                            document.getElementById(ce.id).style.backgroundColor = 'hsl(115,100%,60%)';
+                            document.getElementById(ce.id).style.borderColor = 'hsl(115,100%,60%)';
+                            break;
+                        case 60:
+                            console.log(light);
+                            light = light - 10;
+                            document.getElementById(ce.id).style.backgroundColor = 'hsl(115,100%,50%)';
+                            document.getElementById(ce.id).style.borderColor = 'hsl(115,100%,50%)';
+                            break;
+                        case 50:
+                            console.log(light);
+                            light = light - 10;
+                            document.getElementById(ce.id).style.backgroundColor = 'hsl(115,100%,40%)';
+                            document.getElementById(ce.id).style.borderColor = 'hsl(115,100%,40%)';
+                            break;
+                        case 40:
+                            console.log(light);
+                            light = light - 10;
+                            document.getElementById(ce.id).style.backgroundColor = 'hsl(115,100%,30%)';
+                            document.getElementById(ce.id).style.borderColor = 'hsl(115,100%,30%)';
+                            break;
+                        case 30:
+                            console.log(light);
+                            light = light - 10;
+                            document.getElementById(ce.id).style.backgroundColor = 'hsl(115,100%,20%)';
+                            document.getElementById(ce.id).style.borderColor = 'hsl(115,100%,20%)';
+                            break;
+                        case 20:
+                            console.log(light);
+                            light = light - 10;
+                            document.getElementById(ce.id).style.backgroundColor = 'hsl(115,100%,10%)';
+                            document.getElementById(ce.id).style.borderColor = 'hsl(115,100%,10%)';
+                            break;
+                        case 10:
+                            console.log(light);
+                            light = light - 10;
+                            document.getElementById(ce.id).style.backgroundColor = 'hsl(115,100%,0%)';
+                            document.getElementById(ce.id).style.borderColor = 'hsl(115,100%,0%)';
+                            break;
+
+                    case 0:
+                        console.log(light);
+                        document.getElementById(ce.id).style.backgroundColor = 'hsl(115,100%,0%)';
+                        document.getElementById(ce.id).style.borderColor = 'hsl(115,100%,0%)';
+                        break;
+                    }
+                        
+                    
+                   
                 });
             });
         }
 
-
+        function gameButton(){
+            const buttons=document.getElementById('startAgain');
+            buttons.addEventListener('click', function(){
+                removeContainer();
+                const size = prompt("How big should the board be?");
+                if(size < 100){
+                makeRows(size,size);
+                }
+                else{
+                    alert("Please enter a number less than 100.");
+                    return;
+            }
+            });
+        }
 
 </script>
 
