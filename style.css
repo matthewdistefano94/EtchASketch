@@ -1,4 +1,15 @@
 :root{
+    --allPercent: hsl(115,100%,100%);
+    --nintyPercent: hsl(115,100%,90%);
+    --eightyPercent: hsl(115,100%,80%);
+    --seventyPercent: hsl(115,100%,70%);
+    --sixtyPercent: hsl(115,100%,60%);
+    --fiftyPercent: hsl(115,100%,50%);
+    --fourtyPercent: hsl(115,100%,40%);
+    --thirtyPercent: hsl(115,100%,30%);
+    --twentyPercent: hsl(115,100%,20%);
+    --tenPercent: hsl(115,100%,10%);
+    --zeroPercent: hsl(115,100%,0%);
     --grid-rows:1;
     --grid-cols:1;
 }
@@ -21,6 +32,7 @@
     text-align: center;
     display:inline-block;
     vertical-align: top;
+    background-color: white;
 }
 #startAgain{
     position: relative;
